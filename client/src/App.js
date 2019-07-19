@@ -8,12 +8,12 @@ function App() {
     <div className="App">
 
       <div>
-        <Link to='/'>Login</Link>
-        <Link to='/register'>Register</Link>
+        <Link to='/api'>Login</Link>
+        <Link to='/api/restricted'>Restricted</Link>
       </div>
 
-      <Route exact path='/' component={Login} />
-      <Route exact path='/register'  />
+      <Route exact path='/api' component={Login} />
+      {/* <Route exact path='/api/restricted'  /> */}
 
     </div>
   );

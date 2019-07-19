@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-// import {axiosAuth} from './axiosAuth';
+import { axiosAuth } from "./axiosAuth";
 
 
 function Login ({touched, errors, isSubmitting}){
@@ -50,19 +50,18 @@ export default withFormik({
 
     mapPropsToValues(){
         return{
-            username: 'Name1',
-            password: 'Password'
+            username: 'username',
+            password: '123456789'
         }
     },
 
     validationSchema: Yup.object().shape({
         username: Yup.string()
-        .min(5, 'Username must be above 5 characters')
         .max(25, 'Password must be under 25 characters')
         .required(),
 
         password: Yup.string()
-        .min(8, 'Password must be above 8 characters')
+        .min(4, 'Password must be above 4 characters')
         .required()
     }),
 
@@ -70,6 +69,12 @@ export default withFormik({
         console.log(values)
 
         const url='/login'
+
+        return axiosAuth().post(url, values).then(res => {
+            console.log(res)
+
+            // localStorage.setItem('useToken', res.data)
+        })
     }
 
 })(Login)
