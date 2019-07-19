@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './components/Login'
+import Restricted from './components/Restricted'
 
 import {Route, Link} from 'react-router-dom'
 
@@ -13,7 +14,14 @@ function App() {
       </div>
 
       <Route exact path='/api' component={Login} />
-      {/* <Route exact path='/api/restricted'  /> */}
+      <Route exact path="/api/restricted" render={props => {
+          const token = localStorage.getItem("token");
+          if (!token) {
+            return <Redirect to="/" />;
+          }
+          return <Restricted {...props} />;
+        }}
+      />
 
     </div>
   );
