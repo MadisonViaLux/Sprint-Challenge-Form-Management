@@ -1,6 +1,6 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-// import * as Yup from "yup";
+import * as Yup from "yup";
 // import {axiosAuth} from './axiosAuth';
 
 
@@ -48,6 +48,15 @@ export default withFormik({
         }
     },
 
+    validationSchema: Yup.object().shape({
+        username: Yup.string()
+        .min(5, 'Username must be above 5 characters')
+        .max(25, 'Password must be under 25 characters')
+        .required(),
 
+        password: Yup.string()
+        .min(8, 'Password must be above 8 characters')
+        .required()
+    })
 
 })(Login)
