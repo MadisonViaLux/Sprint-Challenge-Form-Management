@@ -34,6 +34,13 @@ function Login ({touched, errors, isSubmitting}){
                 <h3>{touched.password && errors.password}</h3>
             </div>
 
+            <div>
+                <button>Login</button>
+                {isSubmitting && 'Loading Login'}
+            </div>
+
+            
+
         </Form>
     )
 }
@@ -43,7 +50,7 @@ export default withFormik({
 
     mapPropsToValues(){
         return{
-            username: 'Name',
+            username: 'Name1',
             password: 'Password'
         }
     },
@@ -57,6 +64,10 @@ export default withFormik({
         password: Yup.string()
         .min(8, 'Password must be above 8 characters')
         .required()
-    })
+    }),
+
+    handleSubmit(values, formikBag){
+        console.log(values)
+    }
 
 })(Login)
