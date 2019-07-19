@@ -68,12 +68,14 @@ export default withFormik({
     handleSubmit(values, formikBag){
         console.log(values)
 
-        const url='/login'
+        const url='/register'
 
         return axiosAuth().post(url, values).then(res => {
             console.log(res)
 
-            // localStorage.setItem('useToken', res.data)
+            localStorage.setItem('useToken', res.data.token);
+            formikBag.resetForm();
+            formikBag.props.history.push('')
         })
     }
 
