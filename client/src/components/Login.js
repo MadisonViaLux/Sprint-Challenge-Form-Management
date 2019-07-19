@@ -13,6 +13,7 @@ function Login ({touched, errors, isSubmitting}){
 
                 <Field 
                 name='username'
+                placeholder='Name'
                 type='text'
                 autoComplete='off' 
                 />
@@ -25,6 +26,7 @@ function Login ({touched, errors, isSubmitting}){
 
                 <Field 
                 name='password'
+                placeholder='password'
                 type='password'
                 autoComplete='off' 
                 />
@@ -37,4 +39,15 @@ function Login ({touched, errors, isSubmitting}){
 }
 
 
-export default Login
+export default withFormik({
+
+    mapPropsToValues(){
+        return{
+            username: 'Name',
+            password: 'Password'
+        }
+    },
+
+
+
+})(Login)
