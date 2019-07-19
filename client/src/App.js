@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './components/Login'
 import Restricted from './components/Restricted'
 
-import {Route, Link} from 'react-router-dom'
+import {Route, Link, Redirect} from 'react-router-dom'
 
 function App() {
   return (
@@ -10,11 +10,12 @@ function App() {
 
       <div>
         <Link to='/api'>Login</Link>
-        <Link to='/api/restricted'>Restricted</Link>
+        <br/>
+        <Link to='/api/restricted/data'>Restricted</Link>
       </div>
 
       <Route exact path='/api' component={Login} />
-      <Route exact path="/api/restricted" render={props => {
+      <Route exact path="/api/restricted/data" render={props => {
           const token = localStorage.getItem("token");
           if (!token) {
             return <Redirect to="/" />;
