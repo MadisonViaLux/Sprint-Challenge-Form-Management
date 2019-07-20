@@ -5,12 +5,13 @@ export default function Restricted ({ history }) {
 
     const [tokenData, setTokenData] = useState([]);
 
+    const setRestricted = res => setTokenData(res)
 
 
     useEffect(() => {
-   
+   console.log(axiosAuth)
 
-            axiosAuth().get("/restricted/data").then( res => { setTokenData(res.data)}).catch(err => console.error(err))
+            axiosAuth().get("/restricted/data").then( res => {console.log(res); setRestricted(res.data)}).catch(err => console.error(err))
 
     })
 
