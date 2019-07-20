@@ -4,6 +4,7 @@ import Restricted from './components/Restricted'
 
 import {Route, Link, Redirect} from 'react-router-dom'
 
+
 function App() {
   return (
     <div className="App">
@@ -15,9 +16,12 @@ function App() {
       </div>
 
       <Route exact path='/api' component={Login} />
+
+      
       <Route exact path="/api/restricted/data" render={props => {
           const token = localStorage.getItem("token");
           if (!token) {
+            console.log("you've been rejected")
             return <Redirect to="/" />;
           }
           return <Restricted {...props} />;

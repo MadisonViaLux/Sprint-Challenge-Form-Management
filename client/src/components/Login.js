@@ -73,7 +73,7 @@ export default withFormik({
         return axiosAuth().post(url, values).then(res => {
             console.log(res)
 
-            localStorage.setItem('useToken', res.data.token);
+            localStorage.setItem('token', res.data.token);
             formikBag.resetForm();
             formikBag.props.history.push('')
         })
