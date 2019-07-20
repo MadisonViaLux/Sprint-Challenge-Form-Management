@@ -13,7 +13,7 @@ export default function Restricted ({ history }) {
 
             axiosAuth().get("/restricted/data").then( res => {console.log(res); setRestricted(res.data)}).catch(err => console.error(err))
 
-    })
+    }, [])
 
     return(
         <div>
